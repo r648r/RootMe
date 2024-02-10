@@ -1,0 +1,63 @@
+<?xml version="1.1"?>
+<!-- NOTE: Any NULL bytes in requests and responses are preserved within this output, even though this strictly breaks the XML syntax. If your XML parser rejects the NULL bytes then you will need to remove or replace these bytes before parsing. Alternatively, you can use the option to base64-encode requests and responses. -->
+<!DOCTYPE items [
+<!ELEMENT items (item*)>
+<!ATTLIST items burpVersion CDATA "">
+<!ATTLIST items exportTime CDATA "">
+<!ELEMENT item (time, url, host, port, protocol, method, path, extension, request, status, responselength, mimetype, response, comment)>
+<!ELEMENT time (#PCDATA)>
+<!ELEMENT url (#PCDATA)>
+<!ELEMENT host (#PCDATA)>
+<!ATTLIST host ip CDATA "">
+<!ELEMENT port (#PCDATA)>
+<!ELEMENT protocol (#PCDATA)>
+<!ELEMENT method (#PCDATA)>
+<!ELEMENT path (#PCDATA)>
+<!ELEMENT extension (#PCDATA)>
+<!ELEMENT request (#PCDATA)>
+<!ATTLIST request base64 (true|false) "false">
+<!ELEMENT status (#PCDATA)>
+<!ELEMENT responselength (#PCDATA)>
+<!ELEMENT mimetype (#PCDATA)>
+<!ELEMENT response (#PCDATA)>
+<!ATTLIST response base64 (true|false) "false">
+<!ELEMENT comment (#PCDATA)>
+]>
+<items burpVersion="2023.3.5" exportTime="Tue May 23 17:46:29 CEST 2023">
+  <item>
+    <time>Thu Jan 01 01:00:00 CET 1970</time>
+    <url><![CDATA[http://challenge01.root-me.org:59077/rocketql]]></url>
+    <host ip="212.129.38.224">challenge01.root-me.org</host>
+    <port>59077</port>
+    <protocol>http</protocol>
+    <method><![CDATA[POST]]></method>
+    <path><![CDATA[/rocketql]]></path>
+    <extension>null</extension>
+    <request base64="false"><![CDATA[POST /rocketql HTTP/1.1
+Host: challenge01.root-me.org:59077
+Content-Length: 109
+Accept: application/json
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.5615.138 Safari/537.36
+Content-Type: application/json
+Origin: http://challenge01.root-me.org:59077
+Referer: http://challenge01.root-me.org:59077/
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Connection: close
+
+{"query":"{__schema{types{name,fields{name, args{name,description,type{name, kind, ofType{name, kind}}}}}}}"}]]></request>
+    <status>200</status>
+    <responselength>2860</responselength>
+    <mimetype>JSON</mimetype>
+    <response base64="false"><![CDATA[HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 2650
+ETag: W/"a5a-0TbATEXnOhblDwmNjndNq7w3jN8"
+Date: Tue, 23 May 2023 15:35:22 GMT
+Connection: close
+
+{"data":{"__schema":{"types":[{"name":"Rocket","fields":[{"name":"id","args":[]},{"name":"name","args":[]},{"name":"country","args":[]},{"name":"is_active","args":[]}]},{"name":"Int","fields":null},{"name":"String","fields":null},{"name":"IAmNotHere","fields":[{"name":"very_long_id","args":[]},{"name":"very_long_value","args":[]}]},{"name":"Query","fields":[{"name":"rockets","args":[{"name":"country","description":null,"type":{"name":null,"kind":"NON_NULL","ofType":{"name":"String","kind":"SCALAR"}}}]},{"name":"IAmNotHere","args":[{"name":"very_long_id","description":null,"type":{"name":null,"kind":"NON_NULL","ofType":{"name":"Int","kind":"SCALAR"}}}]}]},{"name":"Boolean","fields":null},{"name":"__Schema","fields":[{"name":"description","args":[]},{"name":"types","args":[]},{"name":"queryType","args":[]},{"name":"mutationType","args":[]},{"name":"subscriptionType","args":[]},{"name":"directives","args":[]}]},{"name":"__Type","fields":[{"name":"kind","args":[]},{"name":"name","args":[]},{"name":"description","args":[]},{"name":"specifiedByUrl","args":[]},{"name":"fields","args":[{"name":"includeDeprecated","description":null,"type":{"name":"Boolean","kind":"SCALAR","ofType":null}}]},{"name":"interfaces","args":[]},{"name":"possibleTypes","args":[]},{"name":"enumValues","args":[{"name":"includeDeprecated","description":null,"type":{"name":"Boolean","kind":"SCALAR","ofType":null}}]},{"name":"inputFields","args":[{"name":"includeDeprecated","description":null,"type":{"name":"Boolean","kind":"SCALAR","ofType":null}}]},{"name":"ofType","args":[]}]},{"name":"__TypeKind","fields":null},{"name":"__Field","fields":[{"name":"name","args":[]},{"name":"description","args":[]},{"name":"args","args":[{"name":"includeDeprecated","description":null,"type":{"name":"Boolean","kind":"SCALAR","ofType":null}}]},{"name":"type","args":[]},{"name":"isDeprecated","args":[]},{"name":"deprecationReason","args":[]}]},{"name":"__InputValue","fields":[{"name":"name","args":[]},{"name":"description","args":[]},{"name":"type","args":[]},{"name":"defaultValue","args":[]},{"name":"isDeprecated","args":[]},{"name":"deprecationReason","args":[]}]},{"name":"__EnumValue","fields":[{"name":"name","args":[]},{"name":"description","args":[]},{"name":"isDeprecated","args":[]},{"name":"deprecationReason","args":[]}]},{"name":"__Directive","fields":[{"name":"name","args":[]},{"name":"description","args":[]},{"name":"isRepeatable","args":[]},{"name":"locations","args":[]},{"name":"args","args":[{"name":"includeDeprecated","description":null,"type":{"name":"Boolean","kind":"SCALAR","ofType":null}}]}]},{"name":"__DirectiveLocation","fields":null}]}}}]]></response>
+    <comment></comment>
+  </item>
+</items>
