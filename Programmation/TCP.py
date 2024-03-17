@@ -56,15 +56,14 @@ def uncompress_me(data):
     else:
         print("Fuck, here we go again")
 
-
-host = "challenge01.root-me.org"
-
 Retour_au_college = lambda: generic_socket_connection(host, 52002, retour_au_college)
 Chaine_encode = lambda: generic_socket_connection(host, 52023, chaine_encode)
 La_roue_romaine = lambda: generic_socket_connection(host, 52021, la_roue_romaine)
 Uncompress_me = lambda: generic_socket_connection(host, 52022, uncompress_me)
 
-Retour_au_college()
-Chaine_encode()
-La_roue_romaine()
-Uncompress_me()
+if __name__ == '__main__':
+    host = "challenge01.root-me.org"
+    Retour_au_college()
+    Chaine_encode()
+    La_roue_romaine()
+    Uncompress_me()
