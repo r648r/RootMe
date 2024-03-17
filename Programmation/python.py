@@ -2,16 +2,19 @@ import socket
 import re
 import math
 import base64
+import subprocess
 
 def generic_socket_connection(host, port, process_function):
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.connect((host, port))
         data = s.recv(1024).decode()
+        while "flag" not in data:
+            print(f"Data received: {data}")
+            result = process_function(data) + "\n"
+            print(f"Answer: {result}")
+            s.send(result.encode())
+            data = s.recv(1024).decode()
         print(f"Data received: {data}")
-        result = process_function(data) + "\n"
-        print(f"Answer: {result}")
-        s.send(result.encode())
-        print(s.recv(1024).decode())
 
 def retour_au_college(data):
     number = re.findall(r'\d+', data)[1::]
@@ -44,13 +47,24 @@ def la_roue_romaine(data):
             result += char
     return result
 
+def uncompress_me(data):
+    b64 = re.findall(r"'(.*?)'", data)[0]
+    command = f'echo "{b64}" | base64 -d | pigz -d -z'
+    result = subprocess.run(command, shell=True, capture_output=True, text=True)
+    if result.returncode == 0:
+        return result.stdout
+    else:
+        print("Fuck, here we go again")
+
+
 host = "challenge01.root-me.org"
 
 Retour_au_college = lambda: generic_socket_connection(host, 52002, retour_au_college)
 Chaine_encode = lambda: generic_socket_connection(host, 52023, chaine_encode)
 La_roue_romaine = lambda: generic_socket_connection(host, 52021, la_roue_romaine)
-
+Uncompress_me = lambda: generic_socket_connection(host, 52022, uncompress_me)
 
 Retour_au_college()
 Chaine_encode()
 La_roue_romaine()
+Uncompress_me()
